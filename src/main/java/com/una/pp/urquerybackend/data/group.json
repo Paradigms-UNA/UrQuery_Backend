@@ -14,10 +14,12 @@
       "name": "Jose Joaquin Garcia Ramirez"
     }
   ],
+
   "about": {
     "course": "Paradigmas de Programación EIF-400",
     "semester": "II semestre 2022",
     "school": "Escuela de Informatica",
     "college": "Universidad de informatica"
   }
+
 }

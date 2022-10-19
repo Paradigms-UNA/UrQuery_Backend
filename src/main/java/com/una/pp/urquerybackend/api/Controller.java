@@ -21,4 +21,10 @@ public class Controller {
     public String search(@PathVariable String DDDD) {
         return ServiceApp.instance().search(DDDD);
     }
+
+    @PostMapping(path = "/compile")
+    public String compile(@RequestBody String data){
+        return data;
+    }
+
 }

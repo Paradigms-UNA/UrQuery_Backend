@@ -1,12 +1,16 @@
 package com.una.pp.urquerybackend.services;
+import com.una.pp.urquerybackend.data.Documents;
+import com.una.pp.urquerybackend.logic.Document;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+@Service
 public class ServiceApp {
 
     private static ServiceApp uniqueInstance;
@@ -25,4 +29,12 @@ public class ServiceApp {
         return pJsonObj;
     }
 
+    public String search(String id) {
+        for (Document d : Documents.instance().getDocuments()) {
+            if (d.getId().equals(id)) {
+                return d.getData();
+            }
+        }
+        return new Document().getData();
+    }
 }

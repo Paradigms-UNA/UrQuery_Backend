@@ -3,9 +3,7 @@ package com.una.pp.urquerybackend.api;
 import com.una.pp.urquerybackend.services.ServiceApp;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,4 +17,8 @@ public class Controller {
         return ServiceApp.instance().about();
     }
 
+    @RequestMapping(value = "document/{DDDD}")
+    public String search(@PathVariable String DDDD) {
+        return ServiceApp.instance().search(DDDD);
+    }
 }

@@ -1,7 +1,9 @@
 package com.una.pp.urquerybackend.api;
 
+import com.una.pp.urquerybackend.logic.DataCompile;
 import com.una.pp.urquerybackend.services.ServiceApp;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,12 +27,13 @@ public class Controller {
     }
 
     @PostMapping(path = "/compile")
-    public String compile(@RequestBody String data){
+    public JSONObject compile(@RequestBody DataCompile data){
         Long datetime = System.currentTimeMillis();
         Timestamp timestamp = new Timestamp(datetime);
-//        System.out.println("Current Time Stamp: "+timestamp);
-        String ret = "Hora Servidor : " + timestamp + "\n" + data;
-        return ret;
+        JSONObject obj = new JSONObject();
+        String info = "" + timestamp + " " + data.getData();
+        obj.put("data", info);
+        return obj;
     }
 
 }

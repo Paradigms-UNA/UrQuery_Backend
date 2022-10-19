@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import java.sql.Timestamp;
+
 @RequestMapping("api/una")
 @RestController
 public class Controller {
@@ -24,7 +26,11 @@ public class Controller {
 
     @PostMapping(path = "/compile")
     public String compile(@RequestBody String data){
-        return data;
+        Long datetime = System.currentTimeMillis();
+        Timestamp timestamp = new Timestamp(datetime);
+//        System.out.println("Current Time Stamp: "+timestamp);
+        String ret = "Hora Servidor : " + timestamp + "\n" + data;
+        return ret;
     }
 
 }

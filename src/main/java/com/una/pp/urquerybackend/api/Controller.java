@@ -3,11 +3,10 @@ package com.una.pp.urquerybackend.api;
 import com.una.pp.urquerybackend.logic.DataCompile;
 import com.una.pp.urquerybackend.services.ServiceApp;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import java.sql.Timestamp;
@@ -16,14 +15,17 @@ import java.sql.Timestamp;
 @RestController
 public class Controller {
 
+    @Autowired
+    private ServiceApp service;
+
     @GetMapping(path = "/about")
     public JSONObject about() throws IOException, ParseException {  //despliega un json con la informacion de los integrantes
-        return ServiceApp.instance().about();
+        return service.about();
     }
 
     @RequestMapping(value = "document/{DDDD}")
     public String search(@PathVariable String DDDD) {
-        return ServiceApp.instance().search(DDDD);
+        return service.search(DDDD);
     }
 
     @PostMapping(path = "/compile")
@@ -33,6 +35,7 @@ public class Controller {
         JSONObject obj = new JSONObject();
         String info = "" + timestamp + " " + data.getData();
         obj.put("data", info);
+
         return obj;
     }
 

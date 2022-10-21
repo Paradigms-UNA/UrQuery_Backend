@@ -1,10 +1,12 @@
 package com.una.pp.urquerybackend.data;
 
 import com.una.pp.urquerybackend.logic.Document;
-import com.una.pp.urquerybackend.services.ServiceApp;
 
 import java.util.*;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Documents {
 
     private static Documents uniqueInstance;
